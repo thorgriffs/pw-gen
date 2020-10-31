@@ -72,10 +72,12 @@ function generatePassword() {
       console.log(password[i]);
     }
 
+    return password.join('');
+
   }
 
   else {
-    console.log("Password criteria has not been met.  Password length should be between 8 and 128 characters.  At least one character type needs to be selected.");
+    alert("Password criteria has not been met.  Password length should be between 8 and 128 characters.  At least one character type needs to be selected.");
   }
 
 }
@@ -88,10 +90,11 @@ function random(max) {
 // Write password to the #password input
 function writePassword() {
   var password = generatePassword();
+  if (typeof password === "string") {
   var passwordText = document.querySelector("#password");
 
   passwordText.value = password;
-
+  }
 }
 
 // Add event listener to generate button
