@@ -35,38 +35,41 @@ function generatePassword() {
   (chooseLower === true || chooseUpper === true || chooseNumbers === true || chooseSpecial === true)) {
     console.log("You can generate the password");
     var password = [];  
-    var randomCharacters = [];
+    var selectedChars = [];
 
     if (chooseLower === true) {
       var randomLowerIndex = random(passwordChar.lowerAlpha.length - 1);
       var randomLowerLetter = passwordChar.lowerAlpha[randomLowerIndex];
       password.push(randomLowerLetter);  
-      randomCharacters = randomCharacters.concat(passwordChar.lowerAlpha);
+      selectedChars = selectedChars.concat(passwordChar.lowerAlpha);
     }
     if (chooseUpper === true) {
       var randomUpperIndex = random(passwordChar.upperAlpha.length - 1);
       var randomUpperLetter = passwordChar.upperAlpha[randomUpperIndex];
       password.push(randomUpperLetter);
-      randomCharacters = randomCharacters.concat(passwordChar.upperAlpha);
+      selectedChars = selectedChars.concat(passwordChar.upperAlpha);
     }
     if (chooseNumbers === true) {
       var randomNumberIndex = random(passwordChar.num.length - 1);
       var randomNumber = passwordChar.num[randomNumberIndex];
       password.push(randomNumber);
-      randomCharacters = randomCharacters.concat(passwordChar.num);
+      selectedChars = selectedChars.concat(passwordChar.num);
     }
     if (chooseSpecial === true) {
       var randomSpecialIndex = random(passwordChar.specialChar.length - 1);
       var randomSpecialChar = passwordChar.specialChar[randomSpecialIndex];
       password.push(randomSpecialChar);
-      randomCharacters = randomCharacters.concat(passwordChar.specialChar);
+      selectedChars = selectedChars.concat(passwordChar.specialChar);
     }
+    
+    while (password.length < passwordLength) {
+      var selectedCharsIndex = random(selectedChars.length -1);
+      var randomSelectedChars = selectedChars[selectedCharsIndex];
+      password.push(randomSelectedChars);
+    }
+
     for (var i =0; i < password.length; i++) {
       console.log(password[i]);
-    }
-
-    while (password.length < passwordLength) {
-
     }
 
   }
