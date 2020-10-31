@@ -12,7 +12,7 @@ var passwordChar = {
   num: [1, 2, 3, 4, 5, 6, 7, 8, 9, 0],
 
   specialChar: ["!", '"', "#", "$", "%", "&", "'", "(", ")", "*", "+", "-", 
-  ".", "/", ":", ";", "<", "=", ">", "?", "@", "`", "^", "_", "|", "~"]
+  ".", "/", ":", ";", "<", "=", ">", "?", "@", "`", "^", "_", "|", "~", "{", "}", "[", "]"]
 
 }
 
@@ -23,17 +23,52 @@ function generatePassword() {
   var chooseSpecial = confirm("Would you like the password to contain special characters?");
   var passwordLength = prompt("Choose a password length between 8 and 128 characters");
 
-  // passwordLength = parseInt(passwordLength);
+  console.log(passwordLength);
+  console.log(typeof passwordLength)
+  passwordLength = parseInt(passwordLength);
+  console.log(passwordLength);
+  console.log(typeof passwordLength);
 
   if ((passwordLength >= 8 && passwordLength <= 128) && 
   (chooseLower === true || chooseUpper === true || chooseNumbers === true || chooseSpecial === true)) {
-    alert("You can generate the password")
+    console.log("You can generate the password");
+    var password = [];  
+    if (chooseLower === true) {
+      var randomLowerIndex = random(passwordChar.lowerAlpha.length - 1);
+      var randomLowerLetter = passwordChar.lowerAlpha[randomLowerIndex];
+      password.push(randomLowerLetter);  
+    }
+    if (chooseUpper === true) {
+      var randomUpperIndex = random(passwordChar.upperAlpha.length - 1);
+      var randomUpperLetter = passwordChar.upperAlpha[randomUpperIndex];
+      password.push(randomUpperLetter);
+    }
+    if (chooseNumbers === true) {
+      var randomNumberIndex = random(passwordChar.num.length - 1);
+      var randomNumber = passwordChar.num[randomNumberIndex];
+      password.push(randomNumber);
+    }
+    if (chooseSpecial === true) {
+      var randomSpecialIndex = random(passwordChar.specialChar.length - 1);
+      var randomSpecialChar = passwordChar.specialChar[randomSpecialIndex];
+      password.push(randomSpecialChar);
+    }
+    for (var i =0; i < password.length; i++) {
+      console.log(password[i]);
+    }
   }
+
   else {
-    alert("Password criteria has not been met.  Password length should be between 8 and 128 characters.  At least one character type needs to be selected.");
+    console.log("Password criteria has not been met.  Password length should be between 8 and 128 characters.  At least one character type needs to be selected.");
   }
 
 }
+
+function random(max) {
+  var r = Math.floor(Math.random() * (max +1));
+  return r;
+}
+
 // Write password to the #password input
 function writePassword() {
   var password = generatePassword();
@@ -46,4 +81,4 @@ function writePassword() {
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
 
-console.log(generatePassword())
+// console.log(generatePassword())
