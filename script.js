@@ -29,33 +29,46 @@ function generatePassword() {
   console.log(passwordLength);
   console.log(typeof passwordLength);
 
+  
+
   if ((passwordLength >= 8 && passwordLength <= 128) && 
   (chooseLower === true || chooseUpper === true || chooseNumbers === true || chooseSpecial === true)) {
     console.log("You can generate the password");
     var password = [];  
+    var randomCharacters = [];
+
     if (chooseLower === true) {
       var randomLowerIndex = random(passwordChar.lowerAlpha.length - 1);
       var randomLowerLetter = passwordChar.lowerAlpha[randomLowerIndex];
       password.push(randomLowerLetter);  
+      randomCharacters = randomCharacters.concat(passwordChar.lowerAlpha);
     }
     if (chooseUpper === true) {
       var randomUpperIndex = random(passwordChar.upperAlpha.length - 1);
       var randomUpperLetter = passwordChar.upperAlpha[randomUpperIndex];
       password.push(randomUpperLetter);
+      randomCharacters = randomCharacters.concat(passwordChar.upperAlpha);
     }
     if (chooseNumbers === true) {
       var randomNumberIndex = random(passwordChar.num.length - 1);
       var randomNumber = passwordChar.num[randomNumberIndex];
       password.push(randomNumber);
+      randomCharacters = randomCharacters.concat(passwordChar.num);
     }
     if (chooseSpecial === true) {
       var randomSpecialIndex = random(passwordChar.specialChar.length - 1);
       var randomSpecialChar = passwordChar.specialChar[randomSpecialIndex];
       password.push(randomSpecialChar);
+      randomCharacters = randomCharacters.concat(passwordChar.specialChar);
     }
     for (var i =0; i < password.length; i++) {
       console.log(password[i]);
     }
+
+    while (password.length < passwordLength) {
+
+    }
+
   }
 
   else {
