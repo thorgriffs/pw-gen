@@ -32,13 +32,16 @@ This is an assignment to create a password generator that allows the user to spe
 
 ## Screenshot
 
-The following image shows the portfolio appearance and functionality:
+The following images show the password generator appearance and functionality:
 
 ![Password Generator](./assets/password-generator-form.png)
 
+
 ![Password Criteria Confrim](./assets/selection-criteria-confirm.png)
 
+
 ![Password Length Prompt](./assets/password-length-prompt.png)
+
 
 ![Generated Password](./assets/generated-password.png)
 
