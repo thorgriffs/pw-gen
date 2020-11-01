@@ -1,8 +1,10 @@
 // Assignment Code
+
+// VARIABLES
+
 var generateBtn = document.querySelector("#generate");
 
-var passwordChar = {
-    
+var passwordChar = {    
   lowerAlpha: ["a","b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", 
   "m", "n","o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"],
   
@@ -13,9 +15,11 @@ var passwordChar = {
 
   specialChar: ["!", '"', "#", "$", "%", "&", "'", "(", ")", "*", "+", "-", 
   ".", "/", ":", ";", "<", "=", ">", "?", "@", "`", "^", "_", "|", "~", "{", "}", "[", "]"]
-
 }
 
+// FUNCTIONS
+
+// Generate Random Password with user selected criteria
 function generatePassword() {
   var chooseLower = confirm("Would you like the password to contain lowercase letters?");
   var chooseUpper = confirm("Would you like the password to contain uppercase letters?");
@@ -28,7 +32,6 @@ function generatePassword() {
   passwordLength = parseInt(passwordLength);
   console.log(passwordLength);
   console.log(typeof passwordLength);
-
   
 
   if ((passwordLength >= 8 && passwordLength <= 128) && 
@@ -73,13 +76,10 @@ function generatePassword() {
     }
 
     return password.join('');
-
   }
-
   else {
     alert("Password criteria has not been met.  Password length should be between 8 and 128 characters.  At least one character type needs to be selected.");
   }
-
 }
 
 function random(max) {
